@@ -1,0 +1,45 @@
+{
+    "auto-aliasing": {
+        "resources": {
+            "cratedb_cluster": {
+                "current": "cratedb:index/cluster:Cluster",
+                "fields": {
+                    "ip_whitelist": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "cratedb_organization": {
+                "current": "cratedb:index/organization:Organization"
+            },
+            "cratedb_project": {
+                "current": "cratedb:index/project:Project"
+            }
+        },
+        "datasources": {
+            "cratedb_cluster": {
+                "current": "cratedb:index/getCluster:getCluster",
+                "fields": {
+                    "ip_whitelist": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "cratedb_organization": {
+                "current": "cratedb:index/getOrganization:getOrganization"
+            },
+            "cratedb_organizations": {
+                "current": "cratedb:index/getOrganizations:getOrganizations",
+                "fields": {
+                    "organizations": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "cratedb_project": {
+                "current": "cratedb:index/getProject:getProject"
+            }
+        }
+    },
+    "auto-settings": {}
+}
