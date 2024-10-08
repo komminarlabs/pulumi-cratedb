@@ -4,7 +4,7 @@ meta_desc: Provides an overview of the CrateDB Provider for Pulumi.
 layout: package
 ---
 
-The CrateDB provider for Pulumi can be used to provision the resources available in [CrateDB](https://www.cratedb.com/).
+The CrateDB provider for Pulumi can be used to provision the resources available in [CrateDB](https://cratedb.com/database/).
 
 The CrateDB provider must be configured with credentials to deploy and update resources in CrateDB; see [Installation & Configuration](./installation-configuration) for instructions.
 
@@ -17,14 +17,13 @@ The CrateDB provider must be configured with credentials to deploy and update re
 import * as pulumi from "@pulumi/pulumi";
 import * as cratedb from "@komminarlabs/cratedb";
 
-// Create a new Bucket
-export const database = new cratedb.Database("signals", {
-    name: "signals",
-    retentionPeriod: 604800,
+export const organization = new cratedb.Organization("default", {
+    name: "default",
 });
 
-// Get the id of the new bucket as an output
-export const databaseId = database.id;
+export const organizationName = organization.name;
+
+console.log(`Organization Name: {organizationName}`);
 ```
 
 {{% /choosable %}}
@@ -33,10 +32,9 @@ export const databaseId = database.id;
 ```python
 import komminarlabs_cratedb as cratedb
 
-database = cratedb.Database(
-    "signals",
-    name="signals",
-    retention_period=604800,
+organization = cratedb.Organization(
+    "default",
+    name="default",
 )
 ```
 
@@ -53,15 +51,14 @@ import (
 
 func main() {
 	pulumi.Run(func(ctx *pulumi.Context) error {
-		signals, err := cratedb.NewDatabase(ctx, "signals", &cratedb.DatabaseArgs{
-			Name:            pulumi.String("signals"),
-			RetentionPeriod: pulumi.Int(604800),
+		defaultOrg, err := cratedb.NewOrganization(ctx, "default", &cratedb.OrganizationArgs{
+			Name: pulumi.String("default"),
 		})
 		if err != nil {
 			return err
 		}
 
-		ctx.Export("databaseId", signals.ID())
+		ctx.Export("defaultOrgName", defaultOrg.Name)
 		return nil
 	})
 }
