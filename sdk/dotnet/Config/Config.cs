@@ -4,7 +4,7 @@
 using System;
 using System.Collections.Immutable;
 
-namespace KomminarLabs.cratedb
+namespace KomminarLabs.CrateDB
 {
     public static class Config
     {

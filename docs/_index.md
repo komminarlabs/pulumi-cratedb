@@ -66,4 +66,23 @@ func main() {
 
 {{% /choosable %}}
 
+{{% choosable language csharp %}}
+
+```csharp
+using Pulumi;
+using KomminarLabs.CrateDB;
+
+class CrateDB : Stack
+{
+    public CrateDB()
+    {
+        var db = new Organization("default", new OrganizationArgs{
+            Name: "default"
+        });
+    }
+}
+```
+
+{{% /choosable %}}
+
 {{< /chooser >}}

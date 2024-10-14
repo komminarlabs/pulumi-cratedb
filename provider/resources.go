@@ -45,7 +45,7 @@ func Provider() tfbridge.ProviderInfo {
 		// Instantiate the Terraform provider
 		P:                    pf.ShimProvider(cratedbshim.NewProvider()),
 		Name:                 "cratedb",
-		DisplayName:          "cratedb",
+		DisplayName:          "CrateDB",
 		Publisher:            "komminarlabs",
 		Version:              version.Version,
 		LogoURL:              "https://avatars.githubusercontent.com/u/5713248?s=200&v=4",
@@ -100,7 +100,7 @@ func Provider() tfbridge.ProviderInfo {
 				"Pulumi": "3.*",
 			},
 			Namespaces: map[string]string{
-				"cratedb": "cratedb",
+				"cratedb": "CrateDB",
 			},
 		},
 	}
