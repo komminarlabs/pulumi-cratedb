@@ -3,9 +3,9 @@
 
 
 "@grpc/grpc-js@^1.10.1":
-  version "1.12.0"
-  resolved "https://registry.yarnpkg.com/@grpc/grpc-js/-/grpc-js-1.12.0.tgz#3f2294c7b685d2df4dc5b0b9b74b595ff3affed0"
-  integrity sha512-eWdP97A6xKtZXVP/ze9y8zYRB2t6ugQAuLXFuZXAsyqmyltaAjl4yPkmIfc0wuTFJMOUF1AdvIFQCL7fMtaX6g==
+  version "1.12.2"
+  resolved "https://registry.yarnpkg.com/@grpc/grpc-js/-/grpc-js-1.12.2.tgz#97eda82dd49bb9c24eaf6434ea8d7de446e95aac"
+  integrity sha512-bgxdZmgTrJZX50OjyVwz3+mNEnCTNkh3cIqGPWVNeW9jX6bn1ZkU80uPd+67/ZpIJIjRQ9qaHCjhavyoWYxumg==
   dependencies:
     "@grpc/proto-loader" "^0.7.13"
     "@js-sdsl/ordered-map" "^4.4.2"
@@ -370,9 +370,9 @@
   integrity sha512-Vvn3zZrhQZkkBE8LSuW3em98c0FwgO4nxzv6OdSxPKJIEKY2bGbHn+mhGIPerzI4twdxaP8/0+06HBpwf345Lw==
 
 "@pulumi/pulumi@^3.0.0":
-  version "3.136.0"
-  resolved "https://registry.yarnpkg.com/@pulumi/pulumi/-/pulumi-3.136.0.tgz#52bf15335abadbd9a40b07a7ad7d745b7ba89650"
-  integrity sha512-8RWX7yoxxDXZxXhJyfKrKpetSuSJzIirW16vF4naKoqF0aUDYE+6gGUrFttEfikGxaEXie4YT1UFnwuCGbXhTw==
+  version "3.136.1"
+  resolved "https://registry.yarnpkg.com/@pulumi/pulumi/-/pulumi-3.136.1.tgz#1ef187cdb3f3b4abf119ae6088e76edb20947ed4"
+  integrity sha512-bO+AVYKyf4dFDVSbBRoCiwAVE0JhugwAEv5FmWit+VHE3f9eoy1qrw7t5DmGmAiL2cGCwTpvVEIf4y1N7360ZA==
   dependencies:
     "@grpc/grpc-js" "^1.10.1"
     "@logdna/tail-file" "^2.0.6"

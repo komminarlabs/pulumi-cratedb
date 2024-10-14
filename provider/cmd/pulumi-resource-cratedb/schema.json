@@ -1,6 +1,6 @@
 {
     "name": "cratedb",
-    "displayName": "cratedb",
+    "displayName": "CrateDB",
     "description": "A Pulumi package for creating and managing CrateDB resources.",
     "keywords": [
         "pulumi",
@@ -23,7 +23,7 @@
                 "Pulumi": "3.*"
             },
             "namespaces": {
-                "cratedb": "cratedb"
+                "cratedb": "CrateDB"
             },
             "compatibility": "tfbridge20",
             "rootNamespace": "KomminarLabs"

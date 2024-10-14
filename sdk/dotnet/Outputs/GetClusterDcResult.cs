@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using Pulumi.Serialization;
 using Pulumi;
 
-namespace KomminarLabs.cratedb.Outputs
+namespace KomminarLabs.CrateDB.Outputs
 {
 
     [OutputType]

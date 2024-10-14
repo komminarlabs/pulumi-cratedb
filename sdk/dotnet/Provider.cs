@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using Pulumi.Serialization;
 using Pulumi;
 
-namespace KomminarLabs.cratedb
+namespace KomminarLabs.CrateDB
 {
     /// <summary>
     /// The provider type for the cratedb package. By default, resources use package-wide configuration
@@ -16,7 +16,7 @@ namespace KomminarLabs.cratedb
     /// construction to achieve fine-grained programmatic control over provider settings. See the
     /// [documentation](https://www.pulumi.com/docs/reference/programming-model/#providers) for more information.
     /// </summary>
-    [cratedbResourceType("pulumi:providers:cratedb")]
+    [CrateDBResourceType("pulumi:providers:cratedb")]
     public partial class Provider : global::Pulumi.ProviderResource
     {
         /// <summary>

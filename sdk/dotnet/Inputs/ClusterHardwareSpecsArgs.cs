@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using Pulumi.Serialization;
 using Pulumi;
 
-namespace KomminarLabs.cratedb.Inputs
+namespace KomminarLabs.CrateDB.Inputs
 {
 
     public sealed class ClusterHardwareSpecsArgs : global::Pulumi.ResourceArgs

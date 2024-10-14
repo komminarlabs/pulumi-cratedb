@@ -8,12 +8,12 @@ using System.Threading.Tasks;
 using Pulumi.Serialization;
 using Pulumi;
 
-namespace KomminarLabs.cratedb
+namespace KomminarLabs.CrateDB
 {
     /// <summary>
     /// Creates and manages a project.
     /// </summary>
-    [cratedbResourceType("cratedb:index/project:Project")]
+    [CrateDBResourceType("cratedb:index/project:Project")]
     public partial class Project : global::Pulumi.CustomResource
     {
         /// <summary>
