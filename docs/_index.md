@@ -10,7 +10,7 @@ The CrateDB provider must be configured with credentials to deploy and update re
 
 ## Example
 
-{{< chooser language "typescript,python,go" >}}
+{{< chooser language "typescript,python,go,csharp" >}}
 {{% choosable language typescript %}}
 
 ```typescript
