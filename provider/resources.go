@@ -48,7 +48,7 @@ func Provider() tfbridge.ProviderInfo {
 		DisplayName:          "CrateDB",
 		Publisher:            "komminarlabs",
 		Version:              version.Version,
-		LogoURL:              "https://avatars.githubusercontent.com/u/5713248?s=200&v=4",
+		LogoURL:              "https://avatars.githubusercontent.com/u/4048232?s=48&v=4",
 		PluginDownloadURL:    "github://api.github.com/komminarlabs",
 		Description:          "A Pulumi package for creating and managing CrateDB resources.",
 		Keywords:             []string{"pulumi", "cratedb", "category/database"},
