@@ -11,7 +11,7 @@
     "license": "Apache-2.0",
     "attribution": "This Pulumi package is based on the [`cratedb` Terraform Provider](https://github.com/komminarlabs/terraform-provider-cratedb).",
     "repository": "https://github.com/komminarlabs/pulumi-cratedb",
-    "logoUrl": "https://avatars.githubusercontent.com/u/5713248?s=200\u0026v=4",
+    "logoUrl": "https://avatars.githubusercontent.com/u/4048232?s=48\u0026v=4",
     "pluginDownloadURL": "github://api.github.com/komminarlabs",
     "publisher": "komminarlabs",
     "meta": {
