@@ -104,7 +104,7 @@ namespace KomminarLabs.CrateDB
         /// The number of nodes in the cluster.
         /// </summary>
         [Output("numNodes")]
-        public Output<double> NumNodes { get; private set; } = null!;
+        public Output<int> NumNodes { get; private set; } = null!;
 
         /// <summary>
         /// The organization id of the cluster.
@@ -140,7 +140,7 @@ namespace KomminarLabs.CrateDB
         /// The product unit of the cluster. Default is `0`.
         /// </summary>
         [Output("productUnit")]
-        public Output<double> ProductUnit { get; private set; } = null!;
+        public Output<int> ProductUnit { get; private set; } = null!;
 
         /// <summary>
         /// The project id of the cluster.
@@ -285,7 +285,7 @@ namespace KomminarLabs.CrateDB
         /// The product unit of the cluster. Default is `0`.
         /// </summary>
         [Input("productUnit")]
-        public Input<double>? ProductUnit { get; set; }
+        public Input<int>? ProductUnit { get; set; }
 
         /// <summary>
         /// The project id of the cluster.
@@ -407,7 +407,7 @@ namespace KomminarLabs.CrateDB
         /// The number of nodes in the cluster.
         /// </summary>
         [Input("numNodes")]
-        public Input<double>? NumNodes { get; set; }
+        public Input<int>? NumNodes { get; set; }
 
         /// <summary>
         /// The organization id of the cluster.
@@ -453,7 +453,7 @@ namespace KomminarLabs.CrateDB
         /// The product unit of the cluster. Default is `0`.
         /// </summary>
         [Input("productUnit")]
-        public Input<double>? ProductUnit { get; set; }
+        public Input<int>? ProductUnit { get; set; }
 
         /// <summary>
         /// The project id of the cluster.

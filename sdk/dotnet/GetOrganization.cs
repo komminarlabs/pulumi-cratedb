@@ -23,6 +23,12 @@ namespace KomminarLabs.CrateDB
         /// </summary>
         public static Output<GetOrganizationResult> Invoke(GetOrganizationInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetOrganizationResult>("cratedb:index/getOrganization:getOrganization", args ?? new GetOrganizationInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// To retrieve an organization.
+        /// </summary>
+        public static Output<GetOrganizationResult> Invoke(GetOrganizationInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetOrganizationResult>("cratedb:index/getOrganization:getOrganization", args ?? new GetOrganizationInvokeArgs(), options.WithDefaults());
     }
 
 
@@ -81,11 +87,11 @@ namespace KomminarLabs.CrateDB
         /// <summary>
         /// The support plan type used in the organization.
         /// </summary>
-        public readonly double PlanType;
+        public readonly int PlanType;
         /// <summary>
         /// The project count in the organization.
         /// </summary>
-        public readonly double ProjectCount;
+        public readonly int ProjectCount;
         /// <summary>
         /// The role FQN.
         /// </summary>
@@ -103,9 +109,9 @@ namespace KomminarLabs.CrateDB
 
             bool notificationsEnabled,
 
-            double planType,
+            int planType,
 
-            double projectCount,
+            int projectCount,
 
             string roleFqn)
         {

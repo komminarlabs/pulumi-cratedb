@@ -10,7 +10,6 @@ import * as utilities from "./utilities";
  * To retrieve a cluster.
  */
 export function getCluster(args: GetClusterArgs, opts?: pulumi.InvokeOptions): Promise<GetClusterResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cratedb:index/getCluster:getCluster", {
         "id": args.id,
@@ -22,7 +21,7 @@ export function getCluster(args: GetClusterArgs, opts?: pulumi.InvokeOptions): P
  */
 export interface GetClusterArgs {
     /**
-     * The id of the last async operation.
+     * The id of the cluster.
      */
     id: string;
 }
@@ -143,8 +142,11 @@ export interface GetClusterResult {
 /**
  * To retrieve a cluster.
  */
-export function getClusterOutput(args: GetClusterOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetClusterResult> {
-    return pulumi.output(args).apply((a: any) => getCluster(a, opts))
+export function getClusterOutput(args: GetClusterOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetClusterResult> {
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("cratedb:index/getCluster:getCluster", {
+        "id": args.id,
+    }, opts);
 }
 
 /**
@@ -152,7 +154,7 @@ export function getClusterOutput(args: GetClusterOutputArgs, opts?: pulumi.Invok
  */
 export interface GetClusterOutputArgs {
     /**
-     * The id of the last async operation.
+     * The id of the cluster.
      */
     id: pulumi.Input<string>;
 }

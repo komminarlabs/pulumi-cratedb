@@ -37,11 +37,11 @@ namespace KomminarLabs.CrateDB.Outputs
         /// <summary>
         /// The support plan type used in the organization.
         /// </summary>
-        public readonly double PlanType;
+        public readonly int PlanType;
         /// <summary>
         /// The project count in the organization.
         /// </summary>
-        public readonly double ProjectCount;
+        public readonly int ProjectCount;
         /// <summary>
         /// The role FQN.
         /// </summary>
@@ -59,9 +59,9 @@ namespace KomminarLabs.CrateDB.Outputs
 
             bool notificationsEnabled,
 
-            double planType,
+            int planType,
 
-            double projectCount,
+            int projectCount,
 
             string roleFqn)
         {

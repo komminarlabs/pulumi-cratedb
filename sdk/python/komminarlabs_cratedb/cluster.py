@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -27,7 +32,7 @@ class ClusterArgs:
                  channel: Optional[pulumi.Input[str]] = None,
                  hardware_specs: Optional[pulumi.Input['ClusterHardwareSpecsArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 product_unit: Optional[pulumi.Input[float]] = None):
+                 product_unit: Optional[pulumi.Input[int]] = None):
         """
         The set of arguments for constructing a Cluster resource.
         :param pulumi.Input[str] crate_version: The CrateDB version of the cluster.
@@ -41,7 +46,7 @@ class ClusterArgs:
         :param pulumi.Input[str] channel: The channel of the cluster. Default is `stable`.
         :param pulumi.Input['ClusterHardwareSpecsArgs'] hardware_specs: The hardware specs of the cluster.
         :param pulumi.Input[str] name: The name of the cluster.
-        :param pulumi.Input[float] product_unit: The product unit of the cluster. Default is `0`.
+        :param pulumi.Input[int] product_unit: The product unit of the cluster. Default is `0`.
         """
         pulumi.set(__self__, "crate_version", crate_version)
         pulumi.set(__self__, "organization_id", organization_id)
@@ -194,14 +199,14 @@ class ClusterArgs:
 
     @property
     @pulumi.getter(name="productUnit")
-    def product_unit(self) -> Optional[pulumi.Input[float]]:
+    def product_unit(self) -> Optional[pulumi.Input[int]]:
         """
         The product unit of the cluster. Default is `0`.
         """
         return pulumi.get(self, "product_unit")
 
     @product_unit.setter
-    def product_unit(self, value: Optional[pulumi.Input[float]]):
+    def product_unit(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "product_unit", value)
 
 
@@ -222,13 +227,13 @@ class _ClusterState:
                  health: Optional[pulumi.Input['ClusterHealthArgs']] = None,
                  ip_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterIpWhitelistArgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 num_nodes: Optional[pulumi.Input[float]] = None,
+                 num_nodes: Optional[pulumi.Input[int]] = None,
                  organization_id: Optional[pulumi.Input[str]] = None,
                  origin: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
                  product_name: Optional[pulumi.Input[str]] = None,
                  product_tier: Optional[pulumi.Input[str]] = None,
-                 product_unit: Optional[pulumi.Input[float]] = None,
+                 product_unit: Optional[pulumi.Input[int]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
                  subscription_id: Optional[pulumi.Input[str]] = None,
                  suspended: Optional[pulumi.Input[bool]] = None,
@@ -250,13 +255,13 @@ class _ClusterState:
         :param pulumi.Input['ClusterHealthArgs'] health: The health of the cluster.
         :param pulumi.Input[Sequence[pulumi.Input['ClusterIpWhitelistArgs']]] ip_whitelists: The IP whitelist of the cluster.
         :param pulumi.Input[str] name: The name of the cluster.
-        :param pulumi.Input[float] num_nodes: The number of nodes in the cluster.
+        :param pulumi.Input[int] num_nodes: The number of nodes in the cluster.
         :param pulumi.Input[str] organization_id: The organization id of the cluster.
         :param pulumi.Input[str] origin: The origin of the cluster.
         :param pulumi.Input[str] password: The password of the cluster.
         :param pulumi.Input[str] product_name: The product name of the cluster.
         :param pulumi.Input[str] product_tier: The product tier of the cluster.
-        :param pulumi.Input[float] product_unit: The product unit of the cluster. Default is `0`.
+        :param pulumi.Input[int] product_unit: The product unit of the cluster. Default is `0`.
         :param pulumi.Input[str] project_id: The project id of the cluster.
         :param pulumi.Input[str] subscription_id: The subscription id of the cluster.
         :param pulumi.Input[bool] suspended: The suspended flag.
@@ -486,14 +491,14 @@ class _ClusterState:
 
     @property
     @pulumi.getter(name="numNodes")
-    def num_nodes(self) -> Optional[pulumi.Input[float]]:
+    def num_nodes(self) -> Optional[pulumi.Input[int]]:
         """
         The number of nodes in the cluster.
         """
         return pulumi.get(self, "num_nodes")
 
     @num_nodes.setter
-    def num_nodes(self, value: Optional[pulumi.Input[float]]):
+    def num_nodes(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "num_nodes", value)
 
     @property
@@ -558,14 +563,14 @@ class _ClusterState:
 
     @property
     @pulumi.getter(name="productUnit")
-    def product_unit(self) -> Optional[pulumi.Input[float]]:
+    def product_unit(self) -> Optional[pulumi.Input[int]]:
         """
         The product unit of the cluster. Default is `0`.
         """
         return pulumi.get(self, "product_unit")
 
     @product_unit.setter
-    def product_unit(self, value: Optional[pulumi.Input[float]]):
+    def product_unit(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "product_unit", value)
 
     @property
@@ -636,13 +641,13 @@ class Cluster(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  channel: Optional[pulumi.Input[str]] = None,
                  crate_version: Optional[pulumi.Input[str]] = None,
-                 hardware_specs: Optional[pulumi.Input[pulumi.InputType['ClusterHardwareSpecsArgs']]] = None,
+                 hardware_specs: Optional[pulumi.Input[Union['ClusterHardwareSpecsArgs', 'ClusterHardwareSpecsArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  organization_id: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
                  product_name: Optional[pulumi.Input[str]] = None,
                  product_tier: Optional[pulumi.Input[str]] = None,
-                 product_unit: Optional[pulumi.Input[float]] = None,
+                 product_unit: Optional[pulumi.Input[int]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
                  subscription_id: Optional[pulumi.Input[str]] = None,
                  username: Optional[pulumi.Input[str]] = None,
@@ -654,13 +659,13 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] channel: The channel of the cluster. Default is `stable`.
         :param pulumi.Input[str] crate_version: The CrateDB version of the cluster.
-        :param pulumi.Input[pulumi.InputType['ClusterHardwareSpecsArgs']] hardware_specs: The hardware specs of the cluster.
+        :param pulumi.Input[Union['ClusterHardwareSpecsArgs', 'ClusterHardwareSpecsArgsDict']] hardware_specs: The hardware specs of the cluster.
         :param pulumi.Input[str] name: The name of the cluster.
         :param pulumi.Input[str] organization_id: The organization id of the cluster.
         :param pulumi.Input[str] password: The password of the cluster.
         :param pulumi.Input[str] product_name: The product name of the cluster.
         :param pulumi.Input[str] product_tier: The product tier of the cluster.
-        :param pulumi.Input[float] product_unit: The product unit of the cluster. Default is `0`.
+        :param pulumi.Input[int] product_unit: The product unit of the cluster. Default is `0`.
         :param pulumi.Input[str] project_id: The project id of the cluster.
         :param pulumi.Input[str] subscription_id: The subscription id of the cluster.
         :param pulumi.Input[str] username: The username of the cluster.
@@ -691,13 +696,13 @@ class Cluster(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  channel: Optional[pulumi.Input[str]] = None,
                  crate_version: Optional[pulumi.Input[str]] = None,
-                 hardware_specs: Optional[pulumi.Input[pulumi.InputType['ClusterHardwareSpecsArgs']]] = None,
+                 hardware_specs: Optional[pulumi.Input[Union['ClusterHardwareSpecsArgs', 'ClusterHardwareSpecsArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  organization_id: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
                  product_name: Optional[pulumi.Input[str]] = None,
                  product_tier: Optional[pulumi.Input[str]] = None,
-                 product_unit: Optional[pulumi.Input[float]] = None,
+                 product_unit: Optional[pulumi.Input[int]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
                  subscription_id: Optional[pulumi.Input[str]] = None,
                  username: Optional[pulumi.Input[str]] = None,
@@ -769,22 +774,22 @@ class Cluster(pulumi.CustomResource):
             backup_schedule: Optional[pulumi.Input[str]] = None,
             channel: Optional[pulumi.Input[str]] = None,
             crate_version: Optional[pulumi.Input[str]] = None,
-            dc: Optional[pulumi.Input[pulumi.InputType['ClusterDcArgs']]] = None,
+            dc: Optional[pulumi.Input[Union['ClusterDcArgs', 'ClusterDcArgsDict']]] = None,
             deletion_protected: Optional[pulumi.Input[bool]] = None,
             external_ip: Optional[pulumi.Input[str]] = None,
             fqdn: Optional[pulumi.Input[str]] = None,
             gc_available: Optional[pulumi.Input[bool]] = None,
-            hardware_specs: Optional[pulumi.Input[pulumi.InputType['ClusterHardwareSpecsArgs']]] = None,
-            health: Optional[pulumi.Input[pulumi.InputType['ClusterHealthArgs']]] = None,
-            ip_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterIpWhitelistArgs']]]]] = None,
+            hardware_specs: Optional[pulumi.Input[Union['ClusterHardwareSpecsArgs', 'ClusterHardwareSpecsArgsDict']]] = None,
+            health: Optional[pulumi.Input[Union['ClusterHealthArgs', 'ClusterHealthArgsDict']]] = None,
+            ip_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterIpWhitelistArgs', 'ClusterIpWhitelistArgsDict']]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            num_nodes: Optional[pulumi.Input[float]] = None,
+            num_nodes: Optional[pulumi.Input[int]] = None,
             organization_id: Optional[pulumi.Input[str]] = None,
             origin: Optional[pulumi.Input[str]] = None,
             password: Optional[pulumi.Input[str]] = None,
             product_name: Optional[pulumi.Input[str]] = None,
             product_tier: Optional[pulumi.Input[str]] = None,
-            product_unit: Optional[pulumi.Input[float]] = None,
+            product_unit: Optional[pulumi.Input[int]] = None,
             project_id: Optional[pulumi.Input[str]] = None,
             subscription_id: Optional[pulumi.Input[str]] = None,
             suspended: Optional[pulumi.Input[bool]] = None,
@@ -802,22 +807,22 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] backup_schedule: The backup schedule.
         :param pulumi.Input[str] channel: The channel of the cluster. Default is `stable`.
         :param pulumi.Input[str] crate_version: The CrateDB version of the cluster.
-        :param pulumi.Input[pulumi.InputType['ClusterDcArgs']] dc: The DublinCore of the cluster.
+        :param pulumi.Input[Union['ClusterDcArgs', 'ClusterDcArgsDict']] dc: The DublinCore of the cluster.
         :param pulumi.Input[bool] deletion_protected: The deletion protected flag.
         :param pulumi.Input[str] external_ip: The external IP address.
         :param pulumi.Input[str] fqdn: The Fully Qualified Domain Name.
         :param pulumi.Input[bool] gc_available: The garbage collection available flag.
-        :param pulumi.Input[pulumi.InputType['ClusterHardwareSpecsArgs']] hardware_specs: The hardware specs of the cluster.
-        :param pulumi.Input[pulumi.InputType['ClusterHealthArgs']] health: The health of the cluster.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterIpWhitelistArgs']]]] ip_whitelists: The IP whitelist of the cluster.
+        :param pulumi.Input[Union['ClusterHardwareSpecsArgs', 'ClusterHardwareSpecsArgsDict']] hardware_specs: The hardware specs of the cluster.
+        :param pulumi.Input[Union['ClusterHealthArgs', 'ClusterHealthArgsDict']] health: The health of the cluster.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterIpWhitelistArgs', 'ClusterIpWhitelistArgsDict']]]] ip_whitelists: The IP whitelist of the cluster.
         :param pulumi.Input[str] name: The name of the cluster.
-        :param pulumi.Input[float] num_nodes: The number of nodes in the cluster.
+        :param pulumi.Input[int] num_nodes: The number of nodes in the cluster.
         :param pulumi.Input[str] organization_id: The organization id of the cluster.
         :param pulumi.Input[str] origin: The origin of the cluster.
         :param pulumi.Input[str] password: The password of the cluster.
         :param pulumi.Input[str] product_name: The product name of the cluster.
         :param pulumi.Input[str] product_tier: The product tier of the cluster.
-        :param pulumi.Input[float] product_unit: The product unit of the cluster. Default is `0`.
+        :param pulumi.Input[int] product_unit: The product unit of the cluster. Default is `0`.
         :param pulumi.Input[str] project_id: The project id of the cluster.
         :param pulumi.Input[str] subscription_id: The subscription id of the cluster.
         :param pulumi.Input[bool] suspended: The suspended flag.
@@ -970,7 +975,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="numNodes")
-    def num_nodes(self) -> pulumi.Output[float]:
+    def num_nodes(self) -> pulumi.Output[int]:
         """
         The number of nodes in the cluster.
         """
@@ -1018,7 +1023,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="productUnit")
-    def product_unit(self) -> pulumi.Output[float]:
+    def product_unit(self) -> pulumi.Output[int]:
         """
         The product unit of the cluster. Default is `0`.
         """

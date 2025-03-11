@@ -41,23 +41,19 @@ type LookupOrganizationResult struct {
 	// Whether notifications enabled for the organization.
 	NotificationsEnabled bool `pulumi:"notificationsEnabled"`
 	// The support plan type used in the organization.
-	PlanType float64 `pulumi:"planType"`
+	PlanType int `pulumi:"planType"`
 	// The project count in the organization.
-	ProjectCount float64 `pulumi:"projectCount"`
+	ProjectCount int `pulumi:"projectCount"`
 	// The role FQN.
 	RoleFqn string `pulumi:"roleFqn"`
 }
 
 func LookupOrganizationOutput(ctx *pulumi.Context, args LookupOrganizationOutputArgs, opts ...pulumi.InvokeOption) LookupOrganizationResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupOrganizationResult, error) {
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
+		ApplyT(func(v interface{}) (LookupOrganizationResultOutput, error) {
 			args := v.(LookupOrganizationArgs)
-			r, err := LookupOrganization(ctx, &args, opts...)
-			var s LookupOrganizationResult
-			if r != nil {
-				s = *r
-			}
-			return s, err
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("cratedb:index/getOrganization:getOrganization", args, LookupOrganizationResultOutput{}, options).(LookupOrganizationResultOutput), nil
 		}).(LookupOrganizationResultOutput)
 }
 
@@ -112,13 +108,13 @@ func (o LookupOrganizationResultOutput) NotificationsEnabled() pulumi.BoolOutput
 }
 
 // The support plan type used in the organization.
-func (o LookupOrganizationResultOutput) PlanType() pulumi.Float64Output {
-	return o.ApplyT(func(v LookupOrganizationResult) float64 { return v.PlanType }).(pulumi.Float64Output)
+func (o LookupOrganizationResultOutput) PlanType() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupOrganizationResult) int { return v.PlanType }).(pulumi.IntOutput)
 }
 
 // The project count in the organization.
-func (o LookupOrganizationResultOutput) ProjectCount() pulumi.Float64Output {
-	return o.ApplyT(func(v LookupOrganizationResult) float64 { return v.ProjectCount }).(pulumi.Float64Output)
+func (o LookupOrganizationResultOutput) ProjectCount() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupOrganizationResult) int { return v.ProjectCount }).(pulumi.IntOutput)
 }
 
 // The role FQN.

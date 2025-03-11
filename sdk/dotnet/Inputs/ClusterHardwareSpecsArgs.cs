@@ -17,7 +17,7 @@ namespace KomminarLabs.CrateDB.Inputs
         /// The cpus per node.
         /// </summary>
         [Input("cpusPerNode")]
-        public Input<double>? CpusPerNode { get; set; }
+        public Input<int>? CpusPerNode { get; set; }
 
         /// <summary>
         /// The disk size per node in bytes.
@@ -35,7 +35,7 @@ namespace KomminarLabs.CrateDB.Inputs
         /// The disks per node.
         /// </summary>
         [Input("disksPerNode")]
-        public Input<double>? DisksPerNode { get; set; }
+        public Input<int>? DisksPerNode { get; set; }
 
         /// <summary>
         /// The heap size in bytes.

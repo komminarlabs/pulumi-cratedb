@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 
@@ -71,8 +76,8 @@ class GetClusterResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
-        if num_nodes and not isinstance(num_nodes, float):
-            raise TypeError("Expected argument 'num_nodes' to be a float")
+        if num_nodes and not isinstance(num_nodes, int):
+            raise TypeError("Expected argument 'num_nodes' to be a int")
         pulumi.set(__self__, "num_nodes", num_nodes)
         if origin and not isinstance(origin, str):
             raise TypeError("Expected argument 'origin' to be a str")
@@ -86,8 +91,8 @@ class GetClusterResult:
         if product_tier and not isinstance(product_tier, str):
             raise TypeError("Expected argument 'product_tier' to be a str")
         pulumi.set(__self__, "product_tier", product_tier)
-        if product_unit and not isinstance(product_unit, float):
-            raise TypeError("Expected argument 'product_unit' to be a float")
+        if product_unit and not isinstance(product_unit, int):
+            raise TypeError("Expected argument 'product_unit' to be a int")
         pulumi.set(__self__, "product_unit", product_unit)
         if project_id and not isinstance(project_id, str):
             raise TypeError("Expected argument 'project_id' to be a str")
@@ -235,7 +240,7 @@ class GetClusterResult:
 
     @property
     @pulumi.getter(name="numNodes")
-    def num_nodes(self) -> float:
+    def num_nodes(self) -> int:
         """
         The number of nodes in the cluster.
         """
@@ -275,7 +280,7 @@ class GetClusterResult:
 
     @property
     @pulumi.getter(name="productUnit")
-    def product_unit(self) -> float:
+    def product_unit(self) -> int:
         """
         The product unit of the cluster.
         """
@@ -363,7 +368,7 @@ def get_cluster(id: Optional[str] = None,
     To retrieve a cluster.
 
 
-    :param str id: The id of the last async operation.
+    :param str id: The id of the cluster.
     """
     __args__ = dict()
     __args__['id'] = id
@@ -398,15 +403,43 @@ def get_cluster(id: Optional[str] = None,
         suspended=pulumi.get(__ret__, 'suspended'),
         url=pulumi.get(__ret__, 'url'),
         username=pulumi.get(__ret__, 'username'))
-
-
-@_utilities.lift_output_func(get_cluster)
 def get_cluster_output(id: Optional[pulumi.Input[str]] = None,
-                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetClusterResult]:
+                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetClusterResult]:
     """
     To retrieve a cluster.
 
 
-    :param str id: The id of the last async operation.
+    :param str id: The id of the cluster.
     """
-    ...
+    __args__ = dict()
+    __args__['id'] = id
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('cratedb:index/getCluster:getCluster', __args__, opts=opts, typ=GetClusterResult)
+    return __ret__.apply(lambda __response__: GetClusterResult(
+        allow_custom_storage=pulumi.get(__response__, 'allow_custom_storage'),
+        allow_suspend=pulumi.get(__response__, 'allow_suspend'),
+        backup_schedule=pulumi.get(__response__, 'backup_schedule'),
+        channel=pulumi.get(__response__, 'channel'),
+        crate_version=pulumi.get(__response__, 'crate_version'),
+        dc=pulumi.get(__response__, 'dc'),
+        deletion_protected=pulumi.get(__response__, 'deletion_protected'),
+        external_ip=pulumi.get(__response__, 'external_ip'),
+        fqdn=pulumi.get(__response__, 'fqdn'),
+        gc_available=pulumi.get(__response__, 'gc_available'),
+        hardware_specs=pulumi.get(__response__, 'hardware_specs'),
+        health=pulumi.get(__response__, 'health'),
+        id=pulumi.get(__response__, 'id'),
+        ip_whitelists=pulumi.get(__response__, 'ip_whitelists'),
+        last_async_operation=pulumi.get(__response__, 'last_async_operation'),
+        name=pulumi.get(__response__, 'name'),
+        num_nodes=pulumi.get(__response__, 'num_nodes'),
+        origin=pulumi.get(__response__, 'origin'),
+        password=pulumi.get(__response__, 'password'),
+        product_name=pulumi.get(__response__, 'product_name'),
+        product_tier=pulumi.get(__response__, 'product_tier'),
+        product_unit=pulumi.get(__response__, 'product_unit'),
+        project_id=pulumi.get(__response__, 'project_id'),
+        subscription_id=pulumi.get(__response__, 'subscription_id'),
+        suspended=pulumi.get(__response__, 'suspended'),
+        url=pulumi.get(__response__, 'url'),
+        username=pulumi.get(__response__, 'username')))

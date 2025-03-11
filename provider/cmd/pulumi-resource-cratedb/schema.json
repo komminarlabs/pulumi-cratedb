@@ -100,7 +100,7 @@
         "cratedb:index/ClusterHardwareSpecs:ClusterHardwareSpecs": {
             "properties": {
                 "cpusPerNode": {
-                    "type": "number",
+                    "type": "integer",
                     "description": "The cpus per node.\n"
                 },
                 "diskSizePerNodeBytes": {
@@ -112,7 +112,7 @@
                     "description": "The disk type.\n"
                 },
                 "disksPerNode": {
-                    "type": "number",
+                    "type": "integer",
                     "description": "The disks per node.\n"
                 },
                 "heapSizeBytes": {
@@ -242,7 +242,7 @@
         "cratedb:index/getClusterHardwareSpecs:getClusterHardwareSpecs": {
             "properties": {
                 "cpusPerNode": {
-                    "type": "number",
+                    "type": "integer",
                     "description": "The cpus per node.\n"
                 },
                 "diskSizePerNodeBytes": {
@@ -254,7 +254,7 @@
                     "description": "The disk type.\n"
                 },
                 "disksPerNode": {
-                    "type": "number",
+                    "type": "integer",
                     "description": "The disks per node.\n"
                 },
                 "heapSizeBytes": {
@@ -429,11 +429,11 @@
                     "description": "Whether notifications enabled for the organization.\n"
                 },
                 "planType": {
-                    "type": "number",
+                    "type": "integer",
                     "description": "The support plan type used in the organization.\n"
                 },
                 "projectCount": {
-                    "type": "number",
+                    "type": "integer",
                     "description": "The project count in the organization.\n"
                 },
                 "roleFqn": {
@@ -602,7 +602,7 @@
                     "description": "The name of the cluster.\n"
                 },
                 "numNodes": {
-                    "type": "number",
+                    "type": "integer",
                     "description": "The number of nodes in the cluster.\n"
                 },
                 "organizationId": {
@@ -627,7 +627,7 @@
                     "description": "The product tier of the cluster.\n"
                 },
                 "productUnit": {
-                    "type": "number",
+                    "type": "integer",
                     "description": "The product unit of the cluster. Default is `0`.\n"
                 },
                 "projectId": {
@@ -714,7 +714,7 @@
                     "description": "The product tier of the cluster.\n"
                 },
                 "productUnit": {
-                    "type": "number",
+                    "type": "integer",
                     "description": "The product unit of the cluster. Default is `0`.\n"
                 },
                 "projectId": {
@@ -803,7 +803,7 @@
                         "description": "The name of the cluster.\n"
                     },
                     "numNodes": {
-                        "type": "number",
+                        "type": "integer",
                         "description": "The number of nodes in the cluster.\n"
                     },
                     "organizationId": {
@@ -828,7 +828,7 @@
                         "description": "The product tier of the cluster.\n"
                     },
                     "productUnit": {
-                        "type": "number",
+                        "type": "integer",
                         "description": "The product unit of the cluster. Default is `0`.\n"
                     },
                     "projectId": {
@@ -875,11 +875,11 @@
                     "description": "Whether notifications enabled for the organization.\n"
                 },
                 "planType": {
-                    "type": "number",
+                    "type": "integer",
                     "description": "The support plan type used in the organization.\n"
                 },
                 "projectCount": {
-                    "type": "number",
+                    "type": "integer",
                     "description": "The project count in the organization.\n"
                 },
                 "roleFqn": {
@@ -922,11 +922,11 @@
                         "description": "Whether notifications enabled for the organization.\n"
                     },
                     "planType": {
-                        "type": "number",
+                        "type": "integer",
                         "description": "The support plan type used in the organization.\n"
                     },
                     "projectCount": {
-                        "type": "number",
+                        "type": "integer",
                         "description": "The project count in the organization.\n"
                     },
                     "roleFqn": {
@@ -1013,7 +1013,7 @@
                 "properties": {
                     "id": {
                         "type": "string",
-                        "description": "The id of the last async operation.\n"
+                        "description": "The id of the cluster.\n"
                     }
                 },
                 "type": "object",
@@ -1025,44 +1025,44 @@
                 "description": "A collection of values returned by getCluster.\n",
                 "properties": {
                     "allowCustomStorage": {
-                        "type": "boolean",
-                        "description": "The allow custom storage flag.\n"
+                        "description": "The allow custom storage flag.\n",
+                        "type": "boolean"
                     },
                     "allowSuspend": {
-                        "type": "boolean",
-                        "description": "The allow suspend flag.\n"
+                        "description": "The allow suspend flag.\n",
+                        "type": "boolean"
                     },
                     "backupSchedule": {
-                        "type": "string",
-                        "description": "The backup schedule.\n"
+                        "description": "The backup schedule.\n",
+                        "type": "string"
                     },
                     "channel": {
-                        "type": "string",
-                        "description": "The channel of the cluster.\n"
+                        "description": "The channel of the cluster.\n",
+                        "type": "string"
                     },
                     "crateVersion": {
-                        "type": "string",
-                        "description": "The CrateDB version of the cluster.\n"
+                        "description": "The CrateDB version of the cluster.\n",
+                        "type": "string"
                     },
                     "dc": {
                         "$ref": "#/types/cratedb:index/getClusterDc:getClusterDc",
                         "description": "The DublinCore of the cluster.\n"
                     },
                     "deletionProtected": {
-                        "type": "boolean",
-                        "description": "The deletion protected flag.\n"
+                        "description": "The deletion protected flag.\n",
+                        "type": "boolean"
                     },
                     "externalIp": {
-                        "type": "string",
-                        "description": "The external IP address.\n"
+                        "description": "The external IP address.\n",
+                        "type": "string"
                     },
                     "fqdn": {
-                        "type": "string",
-                        "description": "The Fully Qualified Domain Name.\n"
+                        "description": "The Fully Qualified Domain Name.\n",
+                        "type": "string"
                     },
                     "gcAvailable": {
-                        "type": "boolean",
-                        "description": "The garbage collection available flag.\n"
+                        "description": "The garbage collection available flag.\n",
+                        "type": "boolean"
                     },
                     "hardwareSpecs": {
                         "$ref": "#/types/cratedb:index/getClusterHardwareSpecs:getClusterHardwareSpecs",
@@ -1073,71 +1073,70 @@
                         "description": "The health of the cluster.\n"
                     },
                     "id": {
-                        "type": "string",
-                        "description": "The id of the cluster.\n"
+                        "description": "The id of the cluster.\n",
+                        "type": "string"
                     },
                     "ipWhitelists": {
-                        "type": "array",
+                        "description": "The IP whitelist of the cluster.\n",
                         "items": {
                             "$ref": "#/types/cratedb:index/getClusterIpWhitelist:getClusterIpWhitelist"
                         },
-                        "description": "The IP whitelist of the cluster.\n"
+                        "type": "array"
                     },
                     "lastAsyncOperation": {
                         "$ref": "#/types/cratedb:index/getClusterLastAsyncOperation:getClusterLastAsyncOperation",
                         "description": "The last async operation of the cluster.\n"
                     },
                     "name": {
-                        "type": "string",
-                        "description": "The name of the cluster.\n"
+                        "description": "The name of the cluster.\n",
+                        "type": "string"
                     },
                     "numNodes": {
-                        "type": "number",
-                        "description": "The number of nodes in the cluster.\n"
+                        "description": "The number of nodes in the cluster.\n",
+                        "type": "integer"
                     },
                     "origin": {
-                        "type": "string",
-                        "description": "The origin of the cluster.\n"
+                        "description": "The origin of the cluster.\n",
+                        "type": "string"
                     },
                     "password": {
-                        "type": "string",
                         "description": "The password of the cluster.\n",
-                        "secret": true
+                        "secret": true,
+                        "type": "string"
                     },
                     "productName": {
-                        "type": "string",
-                        "description": "The product name of the cluster.\n"
+                        "description": "The product name of the cluster.\n",
+                        "type": "string"
                     },
                     "productTier": {
-                        "type": "string",
-                        "description": "The product tier of the cluster.\n"
+                        "description": "The product tier of the cluster.\n",
+                        "type": "string"
                     },
                     "productUnit": {
-                        "type": "number",
-                        "description": "The product unit of the cluster.\n"
+                        "description": "The product unit of the cluster.\n",
+                        "type": "integer"
                     },
                     "projectId": {
-                        "type": "string",
-                        "description": "The project id of the cluster.\n"
+                        "description": "The project id of the cluster.\n",
+                        "type": "string"
                     },
                     "subscriptionId": {
-                        "type": "string",
-                        "description": "The subscription id of the cluster.\n"
+                        "description": "The subscription id of the cluster.\n",
+                        "type": "string"
                     },
                     "suspended": {
-                        "type": "boolean",
-                        "description": "The suspended flag.\n"
+                        "description": "The suspended flag.\n",
+                        "type": "boolean"
                     },
                     "url": {
-                        "type": "string",
-                        "description": "The URL of the cluster.\n"
+                        "description": "The URL of the cluster.\n",
+                        "type": "string"
                     },
                     "username": {
-                        "type": "string",
-                        "description": "The username of the cluster.\n"
+                        "description": "The username of the cluster.\n",
+                        "type": "string"
                     }
                 },
-                "type": "object",
                 "required": [
                     "allowCustomStorage",
                     "allowSuspend",
@@ -1166,7 +1165,8 @@
                     "suspended",
                     "url",
                     "username"
-                ]
+                ],
+                "type": "object"
             }
         },
         "cratedb:index/getOrganization:getOrganization": {
@@ -1192,35 +1192,34 @@
                         "description": "The DublinCore of the organization.\n"
                     },
                     "email": {
-                        "type": "string",
-                        "description": "The notification email used in the organization.\n"
+                        "description": "The notification email used in the organization.\n",
+                        "type": "string"
                     },
                     "id": {
-                        "type": "string",
-                        "description": "The id of the organization.\n"
+                        "description": "The id of the organization.\n",
+                        "type": "string"
                     },
                     "name": {
-                        "type": "string",
-                        "description": "The name of the organization.\n"
+                        "description": "The name of the organization.\n",
+                        "type": "string"
                     },
                     "notificationsEnabled": {
-                        "type": "boolean",
-                        "description": "Whether notifications enabled for the organization.\n"
+                        "description": "Whether notifications enabled for the organization.\n",
+                        "type": "boolean"
                     },
                     "planType": {
-                        "type": "number",
-                        "description": "The support plan type used in the organization.\n"
+                        "description": "The support plan type used in the organization.\n",
+                        "type": "integer"
                     },
                     "projectCount": {
-                        "type": "number",
-                        "description": "The project count in the organization.\n"
+                        "description": "The project count in the organization.\n",
+                        "type": "integer"
                     },
                     "roleFqn": {
-                        "type": "string",
-                        "description": "The role FQN.\n"
+                        "description": "The role FQN.\n",
+                        "type": "string"
                     }
                 },
-                "type": "object",
                 "required": [
                     "dc",
                     "email",
@@ -1230,7 +1229,8 @@
                     "planType",
                     "projectCount",
                     "roleFqn"
-                ]
+                ],
+                "type": "object"
             }
         },
         "cratedb:index/getOrganizations:getOrganizations": {
@@ -1239,21 +1239,21 @@
                 "description": "A collection of values returned by getOrganizations.\n",
                 "properties": {
                     "id": {
-                        "type": "string",
-                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "type": "string"
                     },
                     "organizations": {
-                        "type": "array",
                         "items": {
                             "$ref": "#/types/cratedb:index/getOrganizationsOrganization:getOrganizationsOrganization"
-                        }
+                        },
+                        "type": "array"
                     }
                 },
-                "type": "object",
                 "required": [
                     "organizations",
                     "id"
-                ]
+                ],
+                "type": "object"
             }
         },
         "cratedb:index/getProject:getProject": {
@@ -1279,30 +1279,30 @@
                         "description": "The DublinCore of the project.\n"
                     },
                     "id": {
-                        "type": "string",
-                        "description": "The id of the project.\n"
+                        "description": "The id of the project.\n",
+                        "type": "string"
                     },
                     "name": {
-                        "type": "string",
-                        "description": "The name of the project.\n"
+                        "description": "The name of the project.\n",
+                        "type": "string"
                     },
                     "organizationId": {
-                        "type": "string",
-                        "description": "The organization id of the project.\n"
+                        "description": "The organization id of the project.\n",
+                        "type": "string"
                     },
                     "region": {
-                        "type": "string",
-                        "description": "The region of the project.\n"
+                        "description": "The region of the project.\n",
+                        "type": "string"
                     }
                 },
-                "type": "object",
                 "required": [
                     "dc",
                     "id",
                     "name",
                     "organizationId",
                     "region"
-                ]
+                ],
+                "type": "object"
             }
         }
     }

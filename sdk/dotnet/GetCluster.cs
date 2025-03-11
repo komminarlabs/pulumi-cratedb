@@ -23,13 +23,19 @@ namespace KomminarLabs.CrateDB
         /// </summary>
         public static Output<GetClusterResult> Invoke(GetClusterInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetClusterResult>("cratedb:index/getCluster:getCluster", args ?? new GetClusterInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// To retrieve a cluster.
+        /// </summary>
+        public static Output<GetClusterResult> Invoke(GetClusterInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetClusterResult>("cratedb:index/getCluster:getCluster", args ?? new GetClusterInvokeArgs(), options.WithDefaults());
     }
 
 
     public sealed class GetClusterArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The id of the last async operation.
+        /// The id of the cluster.
         /// </summary>
         [Input("id", required: true)]
         public string Id { get; set; } = null!;
@@ -43,7 +49,7 @@ namespace KomminarLabs.CrateDB
     public sealed class GetClusterInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The id of the last async operation.
+        /// The id of the cluster.
         /// </summary>
         [Input("id", required: true)]
         public Input<string> Id { get; set; } = null!;
@@ -125,7 +131,7 @@ namespace KomminarLabs.CrateDB
         /// <summary>
         /// The number of nodes in the cluster.
         /// </summary>
-        public readonly double NumNodes;
+        public readonly int NumNodes;
         /// <summary>
         /// The origin of the cluster.
         /// </summary>
@@ -145,7 +151,7 @@ namespace KomminarLabs.CrateDB
         /// <summary>
         /// The product unit of the cluster.
         /// </summary>
-        public readonly double ProductUnit;
+        public readonly int ProductUnit;
         /// <summary>
         /// The project id of the cluster.
         /// </summary>
@@ -201,7 +207,7 @@ namespace KomminarLabs.CrateDB
 
             string name,
 
-            double numNodes,
+            int numNodes,
 
             string origin,
 
@@ -211,7 +217,7 @@ namespace KomminarLabs.CrateDB
 
             string productTier,
 
-            double productUnit,
+            int productUnit,
 
             string projectId,
 

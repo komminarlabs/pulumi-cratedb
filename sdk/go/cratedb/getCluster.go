@@ -24,7 +24,7 @@ func LookupCluster(ctx *pulumi.Context, args *LookupClusterArgs, opts ...pulumi.
 
 // A collection of arguments for invoking getCluster.
 type LookupClusterArgs struct {
-	// The id of the last async operation.
+	// The id of the cluster.
 	Id string `pulumi:"id"`
 }
 
@@ -63,7 +63,7 @@ type LookupClusterResult struct {
 	// The name of the cluster.
 	Name string `pulumi:"name"`
 	// The number of nodes in the cluster.
-	NumNodes float64 `pulumi:"numNodes"`
+	NumNodes int `pulumi:"numNodes"`
 	// The origin of the cluster.
 	Origin string `pulumi:"origin"`
 	// The password of the cluster.
@@ -73,7 +73,7 @@ type LookupClusterResult struct {
 	// The product tier of the cluster.
 	ProductTier string `pulumi:"productTier"`
 	// The product unit of the cluster.
-	ProductUnit float64 `pulumi:"productUnit"`
+	ProductUnit int `pulumi:"productUnit"`
 	// The project id of the cluster.
 	ProjectId string `pulumi:"projectId"`
 	// The subscription id of the cluster.
@@ -87,21 +87,17 @@ type LookupClusterResult struct {
 }
 
 func LookupClusterOutput(ctx *pulumi.Context, args LookupClusterOutputArgs, opts ...pulumi.InvokeOption) LookupClusterResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupClusterResult, error) {
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
+		ApplyT(func(v interface{}) (LookupClusterResultOutput, error) {
 			args := v.(LookupClusterArgs)
-			r, err := LookupCluster(ctx, &args, opts...)
-			var s LookupClusterResult
-			if r != nil {
-				s = *r
-			}
-			return s, err
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("cratedb:index/getCluster:getCluster", args, LookupClusterResultOutput{}, options).(LookupClusterResultOutput), nil
 		}).(LookupClusterResultOutput)
 }
 
 // A collection of arguments for invoking getCluster.
 type LookupClusterOutputArgs struct {
-	// The id of the last async operation.
+	// The id of the cluster.
 	Id pulumi.StringInput `pulumi:"id"`
 }
 
@@ -205,8 +201,8 @@ func (o LookupClusterResultOutput) Name() pulumi.StringOutput {
 }
 
 // The number of nodes in the cluster.
-func (o LookupClusterResultOutput) NumNodes() pulumi.Float64Output {
-	return o.ApplyT(func(v LookupClusterResult) float64 { return v.NumNodes }).(pulumi.Float64Output)
+func (o LookupClusterResultOutput) NumNodes() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupClusterResult) int { return v.NumNodes }).(pulumi.IntOutput)
 }
 
 // The origin of the cluster.
@@ -230,8 +226,8 @@ func (o LookupClusterResultOutput) ProductTier() pulumi.StringOutput {
 }
 
 // The product unit of the cluster.
-func (o LookupClusterResultOutput) ProductUnit() pulumi.Float64Output {
-	return o.ApplyT(func(v LookupClusterResult) float64 { return v.ProductUnit }).(pulumi.Float64Output)
+func (o LookupClusterResultOutput) ProductUnit() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupClusterResult) int { return v.ProductUnit }).(pulumi.IntOutput)
 }
 
 // The project id of the cluster.

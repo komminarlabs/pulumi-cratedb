@@ -44,13 +44,13 @@ namespace KomminarLabs.CrateDB
         /// The support plan type used in the organization.
         /// </summary>
         [Output("planType")]
-        public Output<double> PlanType { get; private set; } = null!;
+        public Output<int> PlanType { get; private set; } = null!;
 
         /// <summary>
         /// The project count in the organization.
         /// </summary>
         [Output("projectCount")]
-        public Output<double> ProjectCount { get; private set; } = null!;
+        public Output<int> ProjectCount { get; private set; } = null!;
 
         /// <summary>
         /// The role FQN.
@@ -147,13 +147,13 @@ namespace KomminarLabs.CrateDB
         /// The support plan type used in the organization.
         /// </summary>
         [Input("planType")]
-        public Input<double>? PlanType { get; set; }
+        public Input<int>? PlanType { get; set; }
 
         /// <summary>
         /// The project count in the organization.
         /// </summary>
         [Input("projectCount")]
-        public Input<double>? ProjectCount { get; set; }
+        public Input<int>? ProjectCount { get; set; }
 
         /// <summary>
         /// The role FQN.

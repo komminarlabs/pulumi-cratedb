@@ -17,7 +17,7 @@ namespace KomminarLabs.CrateDB.Outputs
         /// <summary>
         /// The cpus per node.
         /// </summary>
-        public readonly double? CpusPerNode;
+        public readonly int? CpusPerNode;
         /// <summary>
         /// The disk size per node in bytes.
         /// </summary>
@@ -29,7 +29,7 @@ namespace KomminarLabs.CrateDB.Outputs
         /// <summary>
         /// The disks per node.
         /// </summary>
-        public readonly double? DisksPerNode;
+        public readonly int? DisksPerNode;
         /// <summary>
         /// The heap size in bytes.
         /// </summary>
@@ -41,13 +41,13 @@ namespace KomminarLabs.CrateDB.Outputs
 
         [OutputConstructor]
         private ClusterHardwareSpecs(
-            double? cpusPerNode,
+            int? cpusPerNode,
 
             int? diskSizePerNodeBytes,
 
             string? diskType,
 
-            double? disksPerNode,
+            int? disksPerNode,
 
             int? heapSizeBytes,
 
