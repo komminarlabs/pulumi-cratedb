@@ -10,7 +10,6 @@ import * as utilities from "./utilities";
  * To retrieve an organization.
  */
 export function getOrganization(args: GetOrganizationArgs, opts?: pulumi.InvokeOptions): Promise<GetOrganizationResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cratedb:index/getOrganization:getOrganization", {
         "id": args.id,
@@ -67,8 +66,11 @@ export interface GetOrganizationResult {
 /**
  * To retrieve an organization.
  */
-export function getOrganizationOutput(args: GetOrganizationOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetOrganizationResult> {
-    return pulumi.output(args).apply((a: any) => getOrganization(a, opts))
+export function getOrganizationOutput(args: GetOrganizationOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetOrganizationResult> {
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("cratedb:index/getOrganization:getOrganization", {
+        "id": args.id,
+    }, opts);
 }
 
 /**

@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 
@@ -38,11 +43,11 @@ class GetOrganizationResult:
         if notifications_enabled and not isinstance(notifications_enabled, bool):
             raise TypeError("Expected argument 'notifications_enabled' to be a bool")
         pulumi.set(__self__, "notifications_enabled", notifications_enabled)
-        if plan_type and not isinstance(plan_type, float):
-            raise TypeError("Expected argument 'plan_type' to be a float")
+        if plan_type and not isinstance(plan_type, int):
+            raise TypeError("Expected argument 'plan_type' to be a int")
         pulumi.set(__self__, "plan_type", plan_type)
-        if project_count and not isinstance(project_count, float):
-            raise TypeError("Expected argument 'project_count' to be a float")
+        if project_count and not isinstance(project_count, int):
+            raise TypeError("Expected argument 'project_count' to be a int")
         pulumi.set(__self__, "project_count", project_count)
         if role_fqn and not isinstance(role_fqn, str):
             raise TypeError("Expected argument 'role_fqn' to be a str")
@@ -90,7 +95,7 @@ class GetOrganizationResult:
 
     @property
     @pulumi.getter(name="planType")
-    def plan_type(self) -> float:
+    def plan_type(self) -> int:
         """
         The support plan type used in the organization.
         """
@@ -98,7 +103,7 @@ class GetOrganizationResult:
 
     @property
     @pulumi.getter(name="projectCount")
-    def project_count(self) -> float:
+    def project_count(self) -> int:
         """
         The project count in the organization.
         """
@@ -151,15 +156,24 @@ def get_organization(id: Optional[str] = None,
         plan_type=pulumi.get(__ret__, 'plan_type'),
         project_count=pulumi.get(__ret__, 'project_count'),
         role_fqn=pulumi.get(__ret__, 'role_fqn'))
-
-
-@_utilities.lift_output_func(get_organization)
 def get_organization_output(id: Optional[pulumi.Input[str]] = None,
-                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetOrganizationResult]:
+                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetOrganizationResult]:
     """
     To retrieve an organization.
 
 
     :param str id: The id of the organization.
     """
-    ...
+    __args__ = dict()
+    __args__['id'] = id
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('cratedb:index/getOrganization:getOrganization', __args__, opts=opts, typ=GetOrganizationResult)
+    return __ret__.apply(lambda __response__: GetOrganizationResult(
+        dc=pulumi.get(__response__, 'dc'),
+        email=pulumi.get(__response__, 'email'),
+        id=pulumi.get(__response__, 'id'),
+        name=pulumi.get(__response__, 'name'),
+        notifications_enabled=pulumi.get(__response__, 'notifications_enabled'),
+        plan_type=pulumi.get(__response__, 'plan_type'),
+        project_count=pulumi.get(__response__, 'project_count'),
+        role_fqn=pulumi.get(__response__, 'role_fqn')))

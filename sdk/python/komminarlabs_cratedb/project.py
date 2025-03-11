@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -211,7 +216,7 @@ class Project(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            dc: Optional[pulumi.Input[pulumi.InputType['ProjectDcArgs']]] = None,
+            dc: Optional[pulumi.Input[Union['ProjectDcArgs', 'ProjectDcArgsDict']]] = None,
             name: Optional[pulumi.Input[str]] = None,
             organization_id: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None) -> 'Project':
@@ -222,7 +227,7 @@ class Project(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['ProjectDcArgs']] dc: The DublinCore of the project.
+        :param pulumi.Input[Union['ProjectDcArgs', 'ProjectDcArgsDict']] dc: The DublinCore of the project.
         :param pulumi.Input[str] name: The name of the project.
         :param pulumi.Input[str] organization_id: The organization id of the project.
         :param pulumi.Input[str] region: The region of the project.

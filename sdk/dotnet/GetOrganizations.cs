@@ -23,6 +23,12 @@ namespace KomminarLabs.CrateDB
         /// </summary>
         public static Output<GetOrganizationsResult> Invoke(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetOrganizationsResult>("cratedb:index/getOrganizations:getOrganizations", InvokeArgs.Empty, options.WithDefaults());
+
+        /// <summary>
+        /// To retrieve all organizations.
+        /// </summary>
+        public static Output<GetOrganizationsResult> Invoke(InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetOrganizationsResult>("cratedb:index/getOrganizations:getOrganizations", InvokeArgs.Empty, options.WithDefaults());
     }
 
 

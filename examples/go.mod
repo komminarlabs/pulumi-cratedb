@@ -1,14 +1,14 @@
 module github.com/komminarlabs/pulumi-cratedb/examples
 
-go 1.22
+go 1.23.7
 
 require (
-	github.com/komminarlabs/pulumi-cratedb/sdk v0.0.0-20241008184156-52c05386bd35
-	github.com/pulumi/pulumi/sdk/v3 v3.108.1
+	github.com/komminarlabs/pulumi-cratedb/sdk v0.0.0-20250125100118-53407e09ef88
+	github.com/pulumi/pulumi/sdk/v3 v3.153.1
 )
 
 replace (
-	github.com/hashicorp/terraform-plugin-sdk/v2 => github.com/pulumi/terraform-plugin-sdk/v2 v2.0.0-20240229143312-4f60ee4e2975
+	github.com/hashicorp/terraform-plugin-sdk/v2 => github.com/pulumi/terraform-plugin-sdk/v2 v2.0.0-20250221232320-8d4cfd37a3cd
 	github.com/komminarlabs/pulumi-cratedb/provider => ../provider
 	github.com/komminarlabs/terraform-provider-cratedb/shim => ../provider/shim
 )

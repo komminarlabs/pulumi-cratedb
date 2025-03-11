@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 
@@ -90,17 +95,17 @@ class ClusterHardwareSpecs(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 cpus_per_node: Optional[float] = None,
+                 cpus_per_node: Optional[int] = None,
                  disk_size_per_node_bytes: Optional[int] = None,
                  disk_type: Optional[str] = None,
-                 disks_per_node: Optional[float] = None,
+                 disks_per_node: Optional[int] = None,
                  heap_size_bytes: Optional[int] = None,
                  memory_per_node_bytes: Optional[int] = None):
         """
-        :param float cpus_per_node: The cpus per node.
+        :param int cpus_per_node: The cpus per node.
         :param int disk_size_per_node_bytes: The disk size per node in bytes.
         :param str disk_type: The disk type.
-        :param float disks_per_node: The disks per node.
+        :param int disks_per_node: The disks per node.
         :param int heap_size_bytes: The heap size in bytes.
         :param int memory_per_node_bytes: The memory per node in bytes.
         """
@@ -119,7 +124,7 @@ class ClusterHardwareSpecs(dict):
 
     @property
     @pulumi.getter(name="cpusPerNode")
-    def cpus_per_node(self) -> Optional[float]:
+    def cpus_per_node(self) -> Optional[int]:
         """
         The cpus per node.
         """
@@ -143,7 +148,7 @@ class ClusterHardwareSpecs(dict):
 
     @property
     @pulumi.getter(name="disksPerNode")
-    def disks_per_node(self) -> Optional[float]:
+    def disks_per_node(self) -> Optional[int]:
         """
         The disks per node.
         """
@@ -310,17 +315,17 @@ class GetClusterDcResult(dict):
 @pulumi.output_type
 class GetClusterHardwareSpecsResult(dict):
     def __init__(__self__, *,
-                 cpus_per_node: float,
+                 cpus_per_node: int,
                  disk_size_per_node_bytes: int,
                  disk_type: str,
-                 disks_per_node: float,
+                 disks_per_node: int,
                  heap_size_bytes: int,
                  memory_per_node_bytes: int):
         """
-        :param float cpus_per_node: The cpus per node.
+        :param int cpus_per_node: The cpus per node.
         :param int disk_size_per_node_bytes: The disk size per node in bytes.
         :param str disk_type: The disk type.
-        :param float disks_per_node: The disks per node.
+        :param int disks_per_node: The disks per node.
         :param int heap_size_bytes: The heap size in bytes.
         :param int memory_per_node_bytes: The memory per node in bytes.
         """
@@ -333,7 +338,7 @@ class GetClusterHardwareSpecsResult(dict):
 
     @property
     @pulumi.getter(name="cpusPerNode")
-    def cpus_per_node(self) -> float:
+    def cpus_per_node(self) -> int:
         """
         The cpus per node.
         """
@@ -357,7 +362,7 @@ class GetClusterHardwareSpecsResult(dict):
 
     @property
     @pulumi.getter(name="disksPerNode")
-    def disks_per_node(self) -> float:
+    def disks_per_node(self) -> int:
         """
         The disks per node.
         """
@@ -566,8 +571,8 @@ class GetOrganizationsOrganizationResult(dict):
                  id: str,
                  name: str,
                  notifications_enabled: bool,
-                 plan_type: float,
-                 project_count: float,
+                 plan_type: int,
+                 project_count: int,
                  role_fqn: str):
         """
         :param 'GetOrganizationsOrganizationDcArgs' dc: The DublinCore of the organization.
@@ -575,8 +580,8 @@ class GetOrganizationsOrganizationResult(dict):
         :param str id: The id of the organization.
         :param str name: The name of the organization.
         :param bool notifications_enabled: Whether notifications enabled for the organization.
-        :param float plan_type: The support plan type used in the organization.
-        :param float project_count: The project count in the organization.
+        :param int plan_type: The support plan type used in the organization.
+        :param int project_count: The project count in the organization.
         :param str role_fqn: The role FQN.
         """
         pulumi.set(__self__, "dc", dc)
@@ -630,7 +635,7 @@ class GetOrganizationsOrganizationResult(dict):
 
     @property
     @pulumi.getter(name="planType")
-    def plan_type(self) -> float:
+    def plan_type(self) -> int:
         """
         The support plan type used in the organization.
         """
@@ -638,7 +643,7 @@ class GetOrganizationsOrganizationResult(dict):
 
     @property
     @pulumi.getter(name="projectCount")
-    def project_count(self) -> float:
+    def project_count(self) -> int:
         """
         The project count in the organization.
         """

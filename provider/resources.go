@@ -1,22 +1,18 @@
 package cratedb
 
 import (
+	// Allow embedding bridge-metadata.json in the provider.
+	_ "embed"
 	"fmt"
 	"path"
 
-	// Allow embedding bridge-metadata.json in the provider.
-	_ "embed"
-
-	cratedbshim "github.com/komminarlabs/terraform-provider-cratedb/shim"
-
-	pf "github.com/pulumi/pulumi-terraform-bridge/pf/tfbridge"
-	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
-	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
-	shim "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim"
-	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
-
 	// Import custom shim
 	"github.com/komminarlabs/pulumi-cratedb/provider/pkg/version"
+	cratedbshim "github.com/komminarlabs/terraform-provider-cratedb/shim"
+
+	pfbridge "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/pf/tfbridge"
+	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
+	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
 )
 
 // all of the token components used below.
@@ -28,36 +24,27 @@ const (
 	mainMod = "index" // the cratedb module
 )
 
-// preConfigureCallback is called before the providerConfigure function of the underlying provider.
-// It should validate that the provider can be configured, and provide actionable errors in the case
-// it cannot be. Configuration variables can be read from `vars` using the `stringValue` function -
-// for example `stringValue(vars, "accessKey")`.
-func preConfigureCallback(resource.PropertyMap, shim.ResourceConfig) error {
-	return nil
-}
-
 //go:embed cmd/pulumi-resource-cratedb/bridge-metadata.json
-var metadata []byte
+var bridgeMetadata []byte
 
 // Provider returns additional overlaid schema and metadata associated with the provider..
 func Provider() tfbridge.ProviderInfo {
-	prov := tfbridge.ProviderInfo{
+	info := tfbridge.ProviderInfo{
 		// Instantiate the Terraform provider
-		P:                    pf.ShimProvider(cratedbshim.NewProvider()),
-		Name:                 "cratedb",
-		DisplayName:          "CrateDB",
-		Publisher:            "komminarlabs",
-		Version:              version.Version,
-		LogoURL:              "https://avatars.githubusercontent.com/u/4048232?s=48&v=4",
-		PluginDownloadURL:    "github://api.github.com/komminarlabs",
-		Description:          "A Pulumi package for creating and managing CrateDB resources.",
-		Keywords:             []string{"pulumi", "cratedb", "category/database"},
-		License:              "Apache-2.0",
-		Homepage:             "https://www.cratedb.com",
-		Repository:           "https://github.com/komminarlabs/pulumi-cratedb",
-		GitHubOrg:            "komminarlabs",
-		MetadataInfo:         tfbridge.NewProviderMetadata(metadata),
-		PreConfigureCallback: preConfigureCallback,
+		P:                 pfbridge.ShimProvider(cratedbshim.NewProvider(version.Version)),
+		Name:              "cratedb",
+		DisplayName:       "CrateDB",
+		Publisher:         "komminarlabs",
+		Version:           version.Version,
+		LogoURL:           "https://avatars.githubusercontent.com/u/4048232?s=48&v=4",
+		PluginDownloadURL: "github://api.github.com/komminarlabs",
+		Description:       "A Pulumi package for creating and managing CrateDB resources.",
+		Keywords:          []string{"pulumi", "cratedb", "category/database"},
+		License:           "Apache-2.0",
+		Homepage:          "https://www.cratedb.com",
+		Repository:        "https://github.com/komminarlabs/pulumi-cratedb",
+		GitHubOrg:         "komminarlabs",
+		MetadataInfo:      tfbridge.NewProviderMetadata(bridgeMetadata),
 		Resources: map[string]*tfbridge.ResourceInfo{
 			"cratedb_cluster":      {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Cluster")},
 			"cratedb_organization": {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Organization")},
@@ -105,10 +92,10 @@ func Provider() tfbridge.ProviderInfo {
 		},
 	}
 
-	prov.MustComputeTokens(tokens.SingleModule("cratedb_", mainMod,
+	info.MustComputeTokens(tokens.SingleModule("cratedb_", mainMod,
 		tokens.MakeStandard(mainPkg)))
-	prov.MustApplyAutoAliases()
-	prov.SetAutonaming(255, "-")
+	info.MustApplyAutoAliases()
+	info.SetAutonaming(255, "-")
 
-	return prov
+	return info
 }

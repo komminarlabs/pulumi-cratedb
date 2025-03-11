@@ -24,9 +24,9 @@ type Organization struct {
 	// Whether notifications enabled for the organization.
 	NotificationsEnabled pulumi.BoolOutput `pulumi:"notificationsEnabled"`
 	// The support plan type used in the organization.
-	PlanType pulumi.Float64Output `pulumi:"planType"`
+	PlanType pulumi.IntOutput `pulumi:"planType"`
 	// The project count in the organization.
-	ProjectCount pulumi.Float64Output `pulumi:"projectCount"`
+	ProjectCount pulumi.IntOutput `pulumi:"projectCount"`
 	// The role FQN.
 	RoleFqn pulumi.StringOutput `pulumi:"roleFqn"`
 }
@@ -70,9 +70,9 @@ type organizationState struct {
 	// Whether notifications enabled for the organization.
 	NotificationsEnabled *bool `pulumi:"notificationsEnabled"`
 	// The support plan type used in the organization.
-	PlanType *float64 `pulumi:"planType"`
+	PlanType *int `pulumi:"planType"`
 	// The project count in the organization.
-	ProjectCount *float64 `pulumi:"projectCount"`
+	ProjectCount *int `pulumi:"projectCount"`
 	// The role FQN.
 	RoleFqn *string `pulumi:"roleFqn"`
 }
@@ -87,9 +87,9 @@ type OrganizationState struct {
 	// Whether notifications enabled for the organization.
 	NotificationsEnabled pulumi.BoolPtrInput
 	// The support plan type used in the organization.
-	PlanType pulumi.Float64PtrInput
+	PlanType pulumi.IntPtrInput
 	// The project count in the organization.
-	ProjectCount pulumi.Float64PtrInput
+	ProjectCount pulumi.IntPtrInput
 	// The role FQN.
 	RoleFqn pulumi.StringPtrInput
 }
@@ -217,13 +217,13 @@ func (o OrganizationOutput) NotificationsEnabled() pulumi.BoolOutput {
 }
 
 // The support plan type used in the organization.
-func (o OrganizationOutput) PlanType() pulumi.Float64Output {
-	return o.ApplyT(func(v *Organization) pulumi.Float64Output { return v.PlanType }).(pulumi.Float64Output)
+func (o OrganizationOutput) PlanType() pulumi.IntOutput {
+	return o.ApplyT(func(v *Organization) pulumi.IntOutput { return v.PlanType }).(pulumi.IntOutput)
 }
 
 // The project count in the organization.
-func (o OrganizationOutput) ProjectCount() pulumi.Float64Output {
-	return o.ApplyT(func(v *Organization) pulumi.Float64Output { return v.ProjectCount }).(pulumi.Float64Output)
+func (o OrganizationOutput) ProjectCount() pulumi.IntOutput {
+	return o.ApplyT(func(v *Organization) pulumi.IntOutput { return v.ProjectCount }).(pulumi.IntOutput)
 }
 
 // The role FQN.

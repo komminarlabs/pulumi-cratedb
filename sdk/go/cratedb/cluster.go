@@ -45,7 +45,7 @@ type Cluster struct {
 	// The name of the cluster.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The number of nodes in the cluster.
-	NumNodes pulumi.Float64Output `pulumi:"numNodes"`
+	NumNodes pulumi.IntOutput `pulumi:"numNodes"`
 	// The organization id of the cluster.
 	OrganizationId pulumi.StringOutput `pulumi:"organizationId"`
 	// The origin of the cluster.
@@ -57,7 +57,7 @@ type Cluster struct {
 	// The product tier of the cluster.
 	ProductTier pulumi.StringOutput `pulumi:"productTier"`
 	// The product unit of the cluster. Default is `0`.
-	ProductUnit pulumi.Float64Output `pulumi:"productUnit"`
+	ProductUnit pulumi.IntOutput `pulumi:"productUnit"`
 	// The project id of the cluster.
 	ProjectId pulumi.StringOutput `pulumi:"projectId"`
 	// The subscription id of the cluster.
@@ -160,7 +160,7 @@ type clusterState struct {
 	// The name of the cluster.
 	Name *string `pulumi:"name"`
 	// The number of nodes in the cluster.
-	NumNodes *float64 `pulumi:"numNodes"`
+	NumNodes *int `pulumi:"numNodes"`
 	// The organization id of the cluster.
 	OrganizationId *string `pulumi:"organizationId"`
 	// The origin of the cluster.
@@ -172,7 +172,7 @@ type clusterState struct {
 	// The product tier of the cluster.
 	ProductTier *string `pulumi:"productTier"`
 	// The product unit of the cluster. Default is `0`.
-	ProductUnit *float64 `pulumi:"productUnit"`
+	ProductUnit *int `pulumi:"productUnit"`
 	// The project id of the cluster.
 	ProjectId *string `pulumi:"projectId"`
 	// The subscription id of the cluster.
@@ -215,7 +215,7 @@ type ClusterState struct {
 	// The name of the cluster.
 	Name pulumi.StringPtrInput
 	// The number of nodes in the cluster.
-	NumNodes pulumi.Float64PtrInput
+	NumNodes pulumi.IntPtrInput
 	// The organization id of the cluster.
 	OrganizationId pulumi.StringPtrInput
 	// The origin of the cluster.
@@ -227,7 +227,7 @@ type ClusterState struct {
 	// The product tier of the cluster.
 	ProductTier pulumi.StringPtrInput
 	// The product unit of the cluster. Default is `0`.
-	ProductUnit pulumi.Float64PtrInput
+	ProductUnit pulumi.IntPtrInput
 	// The project id of the cluster.
 	ProjectId pulumi.StringPtrInput
 	// The subscription id of the cluster.
@@ -262,7 +262,7 @@ type clusterArgs struct {
 	// The product tier of the cluster.
 	ProductTier string `pulumi:"productTier"`
 	// The product unit of the cluster. Default is `0`.
-	ProductUnit *float64 `pulumi:"productUnit"`
+	ProductUnit *int `pulumi:"productUnit"`
 	// The project id of the cluster.
 	ProjectId string `pulumi:"projectId"`
 	// The subscription id of the cluster.
@@ -290,7 +290,7 @@ type ClusterArgs struct {
 	// The product tier of the cluster.
 	ProductTier pulumi.StringInput
 	// The product unit of the cluster. Default is `0`.
-	ProductUnit pulumi.Float64PtrInput
+	ProductUnit pulumi.IntPtrInput
 	// The project id of the cluster.
 	ProjectId pulumi.StringInput
 	// The subscription id of the cluster.
@@ -457,8 +457,8 @@ func (o ClusterOutput) Name() pulumi.StringOutput {
 }
 
 // The number of nodes in the cluster.
-func (o ClusterOutput) NumNodes() pulumi.Float64Output {
-	return o.ApplyT(func(v *Cluster) pulumi.Float64Output { return v.NumNodes }).(pulumi.Float64Output)
+func (o ClusterOutput) NumNodes() pulumi.IntOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.IntOutput { return v.NumNodes }).(pulumi.IntOutput)
 }
 
 // The organization id of the cluster.
@@ -487,8 +487,8 @@ func (o ClusterOutput) ProductTier() pulumi.StringOutput {
 }
 
 // The product unit of the cluster. Default is `0`.
-func (o ClusterOutput) ProductUnit() pulumi.Float64Output {
-	return o.ApplyT(func(v *Cluster) pulumi.Float64Output { return v.ProductUnit }).(pulumi.Float64Output)
+func (o ClusterOutput) ProductUnit() pulumi.IntOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.IntOutput { return v.ProductUnit }).(pulumi.IntOutput)
 }
 
 // The project id of the cluster.

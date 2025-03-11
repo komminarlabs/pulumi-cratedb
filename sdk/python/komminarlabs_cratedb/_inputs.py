@@ -4,19 +4,45 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
     'ClusterDcArgs',
+    'ClusterDcArgsDict',
     'ClusterHardwareSpecsArgs',
+    'ClusterHardwareSpecsArgsDict',
     'ClusterHealthArgs',
+    'ClusterHealthArgsDict',
     'ClusterIpWhitelistArgs',
+    'ClusterIpWhitelistArgsDict',
     'OrganizationDcArgs',
+    'OrganizationDcArgsDict',
     'ProjectDcArgs',
+    'ProjectDcArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class ClusterDcArgsDict(TypedDict):
+        created: NotRequired[pulumi.Input[str]]
+        """
+        The created time.
+        """
+        modified: NotRequired[pulumi.Input[str]]
+        """
+        The modified time.
+        """
+elif False:
+    ClusterDcArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClusterDcArgs:
@@ -57,20 +83,49 @@ class ClusterDcArgs:
         pulumi.set(self, "modified", value)
 
 
+if not MYPY:
+    class ClusterHardwareSpecsArgsDict(TypedDict):
+        cpus_per_node: NotRequired[pulumi.Input[int]]
+        """
+        The cpus per node.
+        """
+        disk_size_per_node_bytes: NotRequired[pulumi.Input[int]]
+        """
+        The disk size per node in bytes.
+        """
+        disk_type: NotRequired[pulumi.Input[str]]
+        """
+        The disk type.
+        """
+        disks_per_node: NotRequired[pulumi.Input[int]]
+        """
+        The disks per node.
+        """
+        heap_size_bytes: NotRequired[pulumi.Input[int]]
+        """
+        The heap size in bytes.
+        """
+        memory_per_node_bytes: NotRequired[pulumi.Input[int]]
+        """
+        The memory per node in bytes.
+        """
+elif False:
+    ClusterHardwareSpecsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClusterHardwareSpecsArgs:
     def __init__(__self__, *,
-                 cpus_per_node: Optional[pulumi.Input[float]] = None,
+                 cpus_per_node: Optional[pulumi.Input[int]] = None,
                  disk_size_per_node_bytes: Optional[pulumi.Input[int]] = None,
                  disk_type: Optional[pulumi.Input[str]] = None,
-                 disks_per_node: Optional[pulumi.Input[float]] = None,
+                 disks_per_node: Optional[pulumi.Input[int]] = None,
                  heap_size_bytes: Optional[pulumi.Input[int]] = None,
                  memory_per_node_bytes: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input[float] cpus_per_node: The cpus per node.
+        :param pulumi.Input[int] cpus_per_node: The cpus per node.
         :param pulumi.Input[int] disk_size_per_node_bytes: The disk size per node in bytes.
         :param pulumi.Input[str] disk_type: The disk type.
-        :param pulumi.Input[float] disks_per_node: The disks per node.
+        :param pulumi.Input[int] disks_per_node: The disks per node.
         :param pulumi.Input[int] heap_size_bytes: The heap size in bytes.
         :param pulumi.Input[int] memory_per_node_bytes: The memory per node in bytes.
         """
@@ -89,14 +144,14 @@ class ClusterHardwareSpecsArgs:
 
     @property
     @pulumi.getter(name="cpusPerNode")
-    def cpus_per_node(self) -> Optional[pulumi.Input[float]]:
+    def cpus_per_node(self) -> Optional[pulumi.Input[int]]:
         """
         The cpus per node.
         """
         return pulumi.get(self, "cpus_per_node")
 
     @cpus_per_node.setter
-    def cpus_per_node(self, value: Optional[pulumi.Input[float]]):
+    def cpus_per_node(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "cpus_per_node", value)
 
     @property
@@ -125,14 +180,14 @@ class ClusterHardwareSpecsArgs:
 
     @property
     @pulumi.getter(name="disksPerNode")
-    def disks_per_node(self) -> Optional[pulumi.Input[float]]:
+    def disks_per_node(self) -> Optional[pulumi.Input[int]]:
         """
         The disks per node.
         """
         return pulumi.get(self, "disks_per_node")
 
     @disks_per_node.setter
-    def disks_per_node(self, value: Optional[pulumi.Input[float]]):
+    def disks_per_node(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "disks_per_node", value)
 
     @property
@@ -160,6 +215,15 @@ class ClusterHardwareSpecsArgs:
         pulumi.set(self, "memory_per_node_bytes", value)
 
 
+if not MYPY:
+    class ClusterHealthArgsDict(TypedDict):
+        status: NotRequired[pulumi.Input[str]]
+        """
+        The health status of the cluster.
+        """
+elif False:
+    ClusterHealthArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClusterHealthArgs:
     def __init__(__self__, *,
@@ -182,6 +246,19 @@ class ClusterHealthArgs:
     def status(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "status", value)
 
+
+if not MYPY:
+    class ClusterIpWhitelistArgsDict(TypedDict):
+        cidr: NotRequired[pulumi.Input[str]]
+        """
+        The CIDR.
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        The description.
+        """
+elif False:
+    ClusterIpWhitelistArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClusterIpWhitelistArgs:
@@ -222,6 +299,19 @@ class ClusterIpWhitelistArgs:
         pulumi.set(self, "description", value)
 
 
+if not MYPY:
+    class OrganizationDcArgsDict(TypedDict):
+        created: NotRequired[pulumi.Input[str]]
+        """
+        The created time.
+        """
+        modified: NotRequired[pulumi.Input[str]]
+        """
+        The modified time.
+        """
+elif False:
+    OrganizationDcArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class OrganizationDcArgs:
     def __init__(__self__, *,
@@ -260,6 +350,19 @@ class OrganizationDcArgs:
     def modified(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "modified", value)
 
+
+if not MYPY:
+    class ProjectDcArgsDict(TypedDict):
+        created: NotRequired[pulumi.Input[str]]
+        """
+        The created time.
+        """
+        modified: NotRequired[pulumi.Input[str]]
+        """
+        The modified time.
+        """
+elif False:
+    ProjectDcArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ProjectDcArgs:

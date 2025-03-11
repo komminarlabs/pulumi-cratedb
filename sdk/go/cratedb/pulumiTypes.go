@@ -171,13 +171,13 @@ func (o ClusterDcPtrOutput) Modified() pulumi.StringPtrOutput {
 
 type ClusterHardwareSpecs struct {
 	// The cpus per node.
-	CpusPerNode *float64 `pulumi:"cpusPerNode"`
+	CpusPerNode *int `pulumi:"cpusPerNode"`
 	// The disk size per node in bytes.
 	DiskSizePerNodeBytes *int `pulumi:"diskSizePerNodeBytes"`
 	// The disk type.
 	DiskType *string `pulumi:"diskType"`
 	// The disks per node.
-	DisksPerNode *float64 `pulumi:"disksPerNode"`
+	DisksPerNode *int `pulumi:"disksPerNode"`
 	// The heap size in bytes.
 	HeapSizeBytes *int `pulumi:"heapSizeBytes"`
 	// The memory per node in bytes.
@@ -197,13 +197,13 @@ type ClusterHardwareSpecsInput interface {
 
 type ClusterHardwareSpecsArgs struct {
 	// The cpus per node.
-	CpusPerNode pulumi.Float64PtrInput `pulumi:"cpusPerNode"`
+	CpusPerNode pulumi.IntPtrInput `pulumi:"cpusPerNode"`
 	// The disk size per node in bytes.
 	DiskSizePerNodeBytes pulumi.IntPtrInput `pulumi:"diskSizePerNodeBytes"`
 	// The disk type.
 	DiskType pulumi.StringPtrInput `pulumi:"diskType"`
 	// The disks per node.
-	DisksPerNode pulumi.Float64PtrInput `pulumi:"disksPerNode"`
+	DisksPerNode pulumi.IntPtrInput `pulumi:"disksPerNode"`
 	// The heap size in bytes.
 	HeapSizeBytes pulumi.IntPtrInput `pulumi:"heapSizeBytes"`
 	// The memory per node in bytes.
@@ -288,8 +288,8 @@ func (o ClusterHardwareSpecsOutput) ToClusterHardwareSpecsPtrOutputWithContext(c
 }
 
 // The cpus per node.
-func (o ClusterHardwareSpecsOutput) CpusPerNode() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v ClusterHardwareSpecs) *float64 { return v.CpusPerNode }).(pulumi.Float64PtrOutput)
+func (o ClusterHardwareSpecsOutput) CpusPerNode() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterHardwareSpecs) *int { return v.CpusPerNode }).(pulumi.IntPtrOutput)
 }
 
 // The disk size per node in bytes.
@@ -303,8 +303,8 @@ func (o ClusterHardwareSpecsOutput) DiskType() pulumi.StringPtrOutput {
 }
 
 // The disks per node.
-func (o ClusterHardwareSpecsOutput) DisksPerNode() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v ClusterHardwareSpecs) *float64 { return v.DisksPerNode }).(pulumi.Float64PtrOutput)
+func (o ClusterHardwareSpecsOutput) DisksPerNode() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterHardwareSpecs) *int { return v.DisksPerNode }).(pulumi.IntPtrOutput)
 }
 
 // The heap size in bytes.
@@ -342,13 +342,13 @@ func (o ClusterHardwareSpecsPtrOutput) Elem() ClusterHardwareSpecsOutput {
 }
 
 // The cpus per node.
-func (o ClusterHardwareSpecsPtrOutput) CpusPerNode() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *ClusterHardwareSpecs) *float64 {
+func (o ClusterHardwareSpecsPtrOutput) CpusPerNode() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClusterHardwareSpecs) *int {
 		if v == nil {
 			return nil
 		}
 		return v.CpusPerNode
-	}).(pulumi.Float64PtrOutput)
+	}).(pulumi.IntPtrOutput)
 }
 
 // The disk size per node in bytes.
@@ -372,13 +372,13 @@ func (o ClusterHardwareSpecsPtrOutput) DiskType() pulumi.StringPtrOutput {
 }
 
 // The disks per node.
-func (o ClusterHardwareSpecsPtrOutput) DisksPerNode() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *ClusterHardwareSpecs) *float64 {
+func (o ClusterHardwareSpecsPtrOutput) DisksPerNode() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClusterHardwareSpecs) *int {
 		if v == nil {
 			return nil
 		}
 		return v.DisksPerNode
-	}).(pulumi.Float64PtrOutput)
+	}).(pulumi.IntPtrOutput)
 }
 
 // The heap size in bytes.
@@ -1019,13 +1019,13 @@ func (o GetClusterDcOutput) Modified() pulumi.StringOutput {
 
 type GetClusterHardwareSpecs struct {
 	// The cpus per node.
-	CpusPerNode float64 `pulumi:"cpusPerNode"`
+	CpusPerNode int `pulumi:"cpusPerNode"`
 	// The disk size per node in bytes.
 	DiskSizePerNodeBytes int `pulumi:"diskSizePerNodeBytes"`
 	// The disk type.
 	DiskType string `pulumi:"diskType"`
 	// The disks per node.
-	DisksPerNode float64 `pulumi:"disksPerNode"`
+	DisksPerNode int `pulumi:"disksPerNode"`
 	// The heap size in bytes.
 	HeapSizeBytes int `pulumi:"heapSizeBytes"`
 	// The memory per node in bytes.
@@ -1045,13 +1045,13 @@ type GetClusterHardwareSpecsInput interface {
 
 type GetClusterHardwareSpecsArgs struct {
 	// The cpus per node.
-	CpusPerNode pulumi.Float64Input `pulumi:"cpusPerNode"`
+	CpusPerNode pulumi.IntInput `pulumi:"cpusPerNode"`
 	// The disk size per node in bytes.
 	DiskSizePerNodeBytes pulumi.IntInput `pulumi:"diskSizePerNodeBytes"`
 	// The disk type.
 	DiskType pulumi.StringInput `pulumi:"diskType"`
 	// The disks per node.
-	DisksPerNode pulumi.Float64Input `pulumi:"disksPerNode"`
+	DisksPerNode pulumi.IntInput `pulumi:"disksPerNode"`
 	// The heap size in bytes.
 	HeapSizeBytes pulumi.IntInput `pulumi:"heapSizeBytes"`
 	// The memory per node in bytes.
@@ -1085,8 +1085,8 @@ func (o GetClusterHardwareSpecsOutput) ToGetClusterHardwareSpecsOutputWithContex
 }
 
 // The cpus per node.
-func (o GetClusterHardwareSpecsOutput) CpusPerNode() pulumi.Float64Output {
-	return o.ApplyT(func(v GetClusterHardwareSpecs) float64 { return v.CpusPerNode }).(pulumi.Float64Output)
+func (o GetClusterHardwareSpecsOutput) CpusPerNode() pulumi.IntOutput {
+	return o.ApplyT(func(v GetClusterHardwareSpecs) int { return v.CpusPerNode }).(pulumi.IntOutput)
 }
 
 // The disk size per node in bytes.
@@ -1100,8 +1100,8 @@ func (o GetClusterHardwareSpecsOutput) DiskType() pulumi.StringOutput {
 }
 
 // The disks per node.
-func (o GetClusterHardwareSpecsOutput) DisksPerNode() pulumi.Float64Output {
-	return o.ApplyT(func(v GetClusterHardwareSpecs) float64 { return v.DisksPerNode }).(pulumi.Float64Output)
+func (o GetClusterHardwareSpecsOutput) DisksPerNode() pulumi.IntOutput {
+	return o.ApplyT(func(v GetClusterHardwareSpecs) int { return v.DisksPerNode }).(pulumi.IntOutput)
 }
 
 // The heap size in bytes.
@@ -1503,9 +1503,9 @@ type GetOrganizationsOrganization struct {
 	// Whether notifications enabled for the organization.
 	NotificationsEnabled bool `pulumi:"notificationsEnabled"`
 	// The support plan type used in the organization.
-	PlanType float64 `pulumi:"planType"`
+	PlanType int `pulumi:"planType"`
 	// The project count in the organization.
-	ProjectCount float64 `pulumi:"projectCount"`
+	ProjectCount int `pulumi:"projectCount"`
 	// The role FQN.
 	RoleFqn string `pulumi:"roleFqn"`
 }
@@ -1533,9 +1533,9 @@ type GetOrganizationsOrganizationArgs struct {
 	// Whether notifications enabled for the organization.
 	NotificationsEnabled pulumi.BoolInput `pulumi:"notificationsEnabled"`
 	// The support plan type used in the organization.
-	PlanType pulumi.Float64Input `pulumi:"planType"`
+	PlanType pulumi.IntInput `pulumi:"planType"`
 	// The project count in the organization.
-	ProjectCount pulumi.Float64Input `pulumi:"projectCount"`
+	ProjectCount pulumi.IntInput `pulumi:"projectCount"`
 	// The role FQN.
 	RoleFqn pulumi.StringInput `pulumi:"roleFqn"`
 }
@@ -1617,13 +1617,13 @@ func (o GetOrganizationsOrganizationOutput) NotificationsEnabled() pulumi.BoolOu
 }
 
 // The support plan type used in the organization.
-func (o GetOrganizationsOrganizationOutput) PlanType() pulumi.Float64Output {
-	return o.ApplyT(func(v GetOrganizationsOrganization) float64 { return v.PlanType }).(pulumi.Float64Output)
+func (o GetOrganizationsOrganizationOutput) PlanType() pulumi.IntOutput {
+	return o.ApplyT(func(v GetOrganizationsOrganization) int { return v.PlanType }).(pulumi.IntOutput)
 }
 
 // The project count in the organization.
-func (o GetOrganizationsOrganizationOutput) ProjectCount() pulumi.Float64Output {
-	return o.ApplyT(func(v GetOrganizationsOrganization) float64 { return v.ProjectCount }).(pulumi.Float64Output)
+func (o GetOrganizationsOrganizationOutput) ProjectCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetOrganizationsOrganization) int { return v.ProjectCount }).(pulumi.IntOutput)
 }
 
 // The role FQN.

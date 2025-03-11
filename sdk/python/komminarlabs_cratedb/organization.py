@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -44,8 +49,8 @@ class _OrganizationState:
                  email: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  notifications_enabled: Optional[pulumi.Input[bool]] = None,
-                 plan_type: Optional[pulumi.Input[float]] = None,
-                 project_count: Optional[pulumi.Input[float]] = None,
+                 plan_type: Optional[pulumi.Input[int]] = None,
+                 project_count: Optional[pulumi.Input[int]] = None,
                  role_fqn: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Organization resources.
@@ -53,8 +58,8 @@ class _OrganizationState:
         :param pulumi.Input[str] email: The notification email used in the organization.
         :param pulumi.Input[str] name: The name of the organization.
         :param pulumi.Input[bool] notifications_enabled: Whether notifications enabled for the organization.
-        :param pulumi.Input[float] plan_type: The support plan type used in the organization.
-        :param pulumi.Input[float] project_count: The project count in the organization.
+        :param pulumi.Input[int] plan_type: The support plan type used in the organization.
+        :param pulumi.Input[int] project_count: The project count in the organization.
         :param pulumi.Input[str] role_fqn: The role FQN.
         """
         if dc is not None:
@@ -122,26 +127,26 @@ class _OrganizationState:
 
     @property
     @pulumi.getter(name="planType")
-    def plan_type(self) -> Optional[pulumi.Input[float]]:
+    def plan_type(self) -> Optional[pulumi.Input[int]]:
         """
         The support plan type used in the organization.
         """
         return pulumi.get(self, "plan_type")
 
     @plan_type.setter
-    def plan_type(self, value: Optional[pulumi.Input[float]]):
+    def plan_type(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "plan_type", value)
 
     @property
     @pulumi.getter(name="projectCount")
-    def project_count(self) -> Optional[pulumi.Input[float]]:
+    def project_count(self) -> Optional[pulumi.Input[int]]:
         """
         The project count in the organization.
         """
         return pulumi.get(self, "project_count")
 
     @project_count.setter
-    def project_count(self, value: Optional[pulumi.Input[float]]):
+    def project_count(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "project_count", value)
 
     @property
@@ -222,12 +227,12 @@ class Organization(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            dc: Optional[pulumi.Input[pulumi.InputType['OrganizationDcArgs']]] = None,
+            dc: Optional[pulumi.Input[Union['OrganizationDcArgs', 'OrganizationDcArgsDict']]] = None,
             email: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             notifications_enabled: Optional[pulumi.Input[bool]] = None,
-            plan_type: Optional[pulumi.Input[float]] = None,
-            project_count: Optional[pulumi.Input[float]] = None,
+            plan_type: Optional[pulumi.Input[int]] = None,
+            project_count: Optional[pulumi.Input[int]] = None,
             role_fqn: Optional[pulumi.Input[str]] = None) -> 'Organization':
         """
         Get an existing Organization resource's state with the given name, id, and optional extra
@@ -236,12 +241,12 @@ class Organization(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['OrganizationDcArgs']] dc: The DublinCore of the organization.
+        :param pulumi.Input[Union['OrganizationDcArgs', 'OrganizationDcArgsDict']] dc: The DublinCore of the organization.
         :param pulumi.Input[str] email: The notification email used in the organization.
         :param pulumi.Input[str] name: The name of the organization.
         :param pulumi.Input[bool] notifications_enabled: Whether notifications enabled for the organization.
-        :param pulumi.Input[float] plan_type: The support plan type used in the organization.
-        :param pulumi.Input[float] project_count: The project count in the organization.
+        :param pulumi.Input[int] plan_type: The support plan type used in the organization.
+        :param pulumi.Input[int] project_count: The project count in the organization.
         :param pulumi.Input[str] role_fqn: The role FQN.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -291,7 +296,7 @@ class Organization(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="planType")
-    def plan_type(self) -> pulumi.Output[float]:
+    def plan_type(self) -> pulumi.Output[int]:
         """
         The support plan type used in the organization.
         """
@@ -299,7 +304,7 @@ class Organization(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="projectCount")
-    def project_count(self) -> pulumi.Output[float]:
+    def project_count(self) -> pulumi.Output[int]:
         """
         The project count in the organization.
         """

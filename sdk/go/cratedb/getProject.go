@@ -43,15 +43,11 @@ type LookupProjectResult struct {
 }
 
 func LookupProjectOutput(ctx *pulumi.Context, args LookupProjectOutputArgs, opts ...pulumi.InvokeOption) LookupProjectResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupProjectResult, error) {
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
+		ApplyT(func(v interface{}) (LookupProjectResultOutput, error) {
 			args := v.(LookupProjectArgs)
-			r, err := LookupProject(ctx, &args, opts...)
-			var s LookupProjectResult
-			if r != nil {
-				s = *r
-			}
-			return s, err
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("cratedb:index/getProject:getProject", args, LookupProjectResultOutput{}, options).(LookupProjectResultOutput), nil
 		}).(LookupProjectResultOutput)
 }
 
