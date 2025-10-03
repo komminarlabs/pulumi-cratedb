@@ -2,6 +2,16 @@
 
 The CrateDB Resource Provider lets you manage [CrateDB](https://cratedb.com/database/) resources.
 
+## ⚠️ Deprecation Notice
+
+This Pulumi provider for **CrateDB** is **deprecated** and is no longer actively maintained as of **October 2025**.  
+While earlier versions were published, **no further updates, bug fixes, or support will be provided**.
+
+- Existing releases may continue to work, but compatibility with future Pulumi or CrateDB versions is not guaranteed.  
+- Do **not** use this provider for new projects.  
+- The repository is archived and remains public for reference purposes only.  
+- If you require continued usage, you may **fork the repository** and maintain your own version.
+
 ## Installing
 
 This package is available for several languages/platforms:
